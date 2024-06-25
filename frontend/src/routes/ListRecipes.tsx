@@ -1,6 +1,7 @@
 import React from 'react';
-import RecipeCard from "./RecipeCard";
+import { RecipeCard } from "./Card";
 import "../css/ListRecipes.css"
+import {Link} from "react-router-dom";
 export default function ListRecipes() {
     const recipes = [
         { title: 'Recipe 1', image: 'https://via.placeholder.com/150', description: 'Description 1' },
@@ -14,12 +15,14 @@ export default function ListRecipes() {
     return (
         <div className="recipe-list">
             {recipes.map((recipe, index) => (
-                <RecipeCard
-                key={index}
-                title={recipe.title}
-                image={recipe.image}
-                description={recipe.description}
-                />
+                //<Link to={`/recipe/${recipe.id}`}>
+                    <RecipeCard
+                    key={index}
+                    title={recipe.title}
+                    image={recipe.image}
+                    description={recipe.description}
+                    />
+                //</Link>
             ))}
         </div>
     );
