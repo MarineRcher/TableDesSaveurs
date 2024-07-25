@@ -41,7 +41,7 @@ create table measurements_quantity (
 drop table if exists measurements;
 create table measurements (
     id_measurement int(11) primary key auto_increment not null,
-    measurement varchar(25)
+    measurement varchar(25) default (`solid`, `liquid`)
 );
 
 -- Drop and create categories_ingredients table

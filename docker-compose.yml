@@ -36,10 +36,10 @@ services:
   database:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: MgSfD67Avf6w98
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: TDS
-      MYSQL_USER: mainUser
-      MYSQL_PASSWORD: MgSfD67Avf6w98
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     volumes:
       - db-data:/var/lib/mysql/
 
