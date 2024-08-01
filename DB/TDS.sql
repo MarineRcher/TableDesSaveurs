@@ -99,13 +99,28 @@ CREATE TABLE recipes (
     name VARCHAR(50),
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     id_user INT(11),
+    duration int(30),
     id_category_recipes INT(11),
-    id_difficulty INT(11),
+    id_difficulty INT(11), 
+    id_diet INT(11),
     id_origin_recipes INT(11),
     CONSTRAINT fk_user_recipe FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE SET NULL,
     CONSTRAINT fk_category_recipe FOREIGN KEY (id_category_recipes) REFERENCES categories_recipes(id_category_recipes) ON DELETE SET NULL,
     CONSTRAINT fk_difficulty_recipe FOREIGN KEY (id_difficulty) REFERENCES difficulties(id_difficulty) ON DELETE SET NULL,
-    CONSTRAINT fk_origin_recipe FOREIGN KEY (id_origin_recipes) REFERENCES origins_recipes(id_origin_recipes) ON DELETE SET NULL
+    CONSTRAINT fk_origin_recipe FOREIGN KEY (id_origin_recipes) REFERENCES origins_recipes(id_origin_recipes) ON DELETE SET NULL,
+    CONSTRAINT fk_diet_recipe FOREIGN KEY (id_diet) REFERENCES diet(id_diet) ON DELETE SET NULL
+);
+
+-- Drop and create recipes table
+DROP TABLE IF EXISTS img_recipes;
+CREATE TABLE img_recipes (
+    id_img_recipe INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name VARCHAR(50),
+    post_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    id_recipe INT(11),
+    id_user INT(11),
+    CONSTRAINT fk__recipe FOREIGN KEY (id_recipe) REFERENCES recipes(id_recipe) ON DELETE SET NULL,
+    CONSTRAINT fk_user_recipe_img FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE SET NULL
 );
 
 -- Drop and create ingredients_recipes table
@@ -118,7 +133,7 @@ CREATE TABLE ingredients_recipes (
     id_measurement INT(11),
     CONSTRAINT fk_ingredient_recipe FOREIGN KEY (id_ingredient) REFERENCES ingredients(id_ingredient) ON DELETE SET NULL,
     CONSTRAINT fk_recipe_ingredient_recipe FOREIGN KEY (id_recipe) REFERENCES recipes(id_recipe) ON DELETE SET NULL,
-    CONSTRAINT fk_measure FOREIGN KEY (id_measurement) REFERENCES measurements(id_measurement) ON DELETE SET NULL
+    CONSTRAINT fk_measure_ingredient FOREIGN KEY (id_measurement) REFERENCES measurements(id_measurement) ON DELETE SET NULL
 );
 
 -- Drop and create kitchen_ustensiles table
