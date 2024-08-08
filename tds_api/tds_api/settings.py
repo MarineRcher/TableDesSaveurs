@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os
-import dj_database_url
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,16 +76,28 @@ WSGI_APPLICATION = 'tds_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+import environ
+
+# Initialise environ
+env = environ.Env(
+    # définissez les valeurs par défaut et les cast types
+    DEBUG=(bool, False)
+)
+
+# Lisez le fichier .env s'il existe
+environ.Env.read_env()
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('MYSQL_DATABASE', 'yourdb'),
-        'USER': os.environ.get('MYSQL_USER', 'user'),
-        'PASSWORD': os.environ.get('MYSQL_PASSWORD', 'password'),
-        'HOST': os.environ.get('MYSQL_HOST', 'database'),
-        'PORT': os.environ.get('MYSQL_PORT', '3306'),
+        'NAME': env('MYSQL_DATABASE'),
+        'USER': env('MYSQL_USER'),
+        'PASSWORD': env('MYSQL_PASSWORD'),
+        'HOST': env('MYSQL_HOST'),
+        'PORT': env('MYSQL_PORT'),
     }
 }
+
 
 
 
