@@ -1,0 +1,40 @@
+{
+  "name": "Salade César",
+  "duration": "00:30:00",
+  "category": 1,
+  "difficulty": 2,
+  "diet": 1,
+  "origins": 1,
+  "ingredients": [
+    {
+      "measure_quantity": 200,
+      "ingredient": 1,
+      "measurement": 1
+    },
+    {
+      "measure_quantity": 100,
+      "ingredient": 2,
+      "measurement": 2
+    }
+  ],
+  "steps": [
+    {
+      "step": "Couper les légumes",
+      "number_of_steps": 1
+    },
+    {
+      "step": "Mélanger avec la sauce",
+      "number_of_steps": 2
+    }
+  ],
+  "images": [
+    {
+      "name": "image1.jpg"
+    }
+  ],
+  "kitchen_ustensiles": [
+    {
+      "kitchen_ustensile": 1
+    }
+  ]
+}
